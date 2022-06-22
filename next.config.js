@@ -1,6 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const withAntdLess = require("next-plugin-antd-less");
 
-module.exports = nextConfig
+module.exports = withAntdLess({
+  resolve: {
+    alias: {
+      "react/jsx-runtime": require.resolve("jsx-runtime"),
+    },
+  },
+  modifyVars: {},
+  lessVarsFilePathAppendToEndOfContent: false,
+  cssLoaderOptions: {},
+  webpack(config) {
+    return config;
+  },
+});
