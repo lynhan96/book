@@ -8,7 +8,6 @@ const customLayoutPlugin: CellPlugin<{
   Renderer: ({ children, data }) => (
     <div
       style={{
-        border: '1px solid black',
         backgroundColor: data.backgroundColor,
       }}
     >

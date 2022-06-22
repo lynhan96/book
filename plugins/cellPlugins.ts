@@ -29,9 +29,6 @@ import customContentPluginWithListField from './customContentPluginWithListField
 import customLayoutPlugin from './customLayoutPlugin';
 import customLayoutPluginWithInitialState from './customLayoutPluginWithInitialState';
 import { defaultSlate, customizedSlate } from './slate';
-import customContentPluginTwitter from './customContentPluginTwitter';
-import codeSnippet from './codeSnippet';
-import contactForm from './contactForm';
 
 const fakeImageUploadService: (url: string) => ImageUploadType =
   (defaultUrl) => (file, reportProgress) => {
@@ -63,10 +60,6 @@ export const cellPlugins = [
   html5video,
   customContentPlugin,
   customContentPluginWithListField,
-  customContentPluginTwitter,
-  codeSnippet,
-  contactForm,
-
   background({
     imageUpload: fakeImageUploadService('/images/sea-bg.jpg'),
     enabledModes:

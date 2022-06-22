@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@material-ui/core": "^4.12.4",
@@ -23,6 +24,8 @@
     "@react-page/plugins-spacer": "^4.11.1",
     "@react-page/plugins-video": "^4.11.1",
     "@react-page/react-admin": "^4.11.1",
+    "antd": "^4.21.3",
+    "babel-plugin-import": "^1.13.5",
     "jsx-runtime": "^1.2.0",
     "next": "12.1.6",
     "next-plugin-antd-less": "^1.8.0",
@@ -35,20 +38,20 @@
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.178",
     "@types/node": "18.0.0",
     "@types/react": "17.0.38",
     "@types/react-syntax-highlighter": "^15.5.2",
-    "eslint": "8.18.0",
-    "eslint-config-next": "12.1.6",
-    "typescript": "4.7.4",
-    "@types/lodash": "^4.14.178",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^1.13.2",
+    "eslint": "8.18.0",
+    "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "typescript": "4.7.4"
   }
 }

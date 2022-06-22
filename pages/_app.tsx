@@ -8,9 +8,17 @@ import '@react-page/plugins-image/lib/index.css';
 import '@react-page/plugins-slate/lib/index.css';
 import 'katex/dist/katex.min.css';
 
+import GlobalStyle from 'src/theme/styled';
+
 function MyApp({ Component, pageProps }: AppProps) {
   const PageComponent = Component as any;
-  return <PageComponent {...pageProps} />;
+
+  return (
+    <>
+      <GlobalStyle />
+      <PageComponent {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;
