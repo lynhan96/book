@@ -32,11 +32,9 @@ export const BlankPage = styled.div`
   width: 100%;
   background: white;
   height: 200px;
-
   overflow: hidden;
 
   & > div {
-    width: 100%;
   }
 
   ${({ active }) =>
@@ -79,4 +77,13 @@ export const PreviewButton = styled(Button)`
   right: 30px;
   top: 20px;
   z-index: 999999;
+`;
+
+export const Upload = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;

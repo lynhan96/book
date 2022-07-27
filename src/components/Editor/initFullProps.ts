@@ -3,9 +3,9 @@ const initFullProps = {
     tindent_format: { selector: 'p', styles: { 'text-indent': '40mm' } },
   },
   toolbar:
-    'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+    'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview  print | insertfile image media link anchor codesample | ltr rtl',
   plugins:
-    'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc advlist lists wordcount  textpattern noneditable help charmap quickbars emoticons',
+    'print preview paste importcss searchreplace autolink autosave directionality code visualblocks visualchars fullscreen link codesample table charmap hr pagebreak nonbreaking anchor toc advlist lists wordcount  textpattern noneditable help charmap quickbars emoticons',
   menubar: 'edit view insert format tools table',
   toolbar_sticky: true,
   image_advtab: true,
