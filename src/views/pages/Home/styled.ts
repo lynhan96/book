@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Layout = styled.div`
   display: flex;
@@ -15,6 +15,7 @@ export const Sidebar = styled.div`
   width: 200px;
   padding: 20px 30px;
   overflow-y: auto;
+  background: #333333;
 `;
 
 export const PageItem = styled.div`
@@ -23,6 +24,7 @@ export const PageItem = styled.div`
   width: 100%;
   margin-bottom: 20px;
   cursor: pointer;
+  color: #fff;
 `;
 
 export const BlankPage = styled.div`
@@ -30,17 +32,20 @@ export const BlankPage = styled.div`
   width: 100%;
   background: white;
   height: 200px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
   overflow: hidden;
 
   & > div {
     width: 100%;
   }
 
-  .react-page-cell-inner-leaf {
-    font-size: 4px;
-    padding: 8px;
-  }
+  ${({ active }) =>
+    active &&
+    css`
+      box-shadow: 0 4px 8px 0 rgba(248, 241, 12, 0.2),
+        0 6px 20px 0 rgba(248, 241, 12, 0.3);
+      border: 4px solid rgba(248, 241, 12);
+    `}
 `;
 
 export const PageNumber = styled.div`
@@ -53,17 +58,10 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(100% - 200px);
-  padding: 30px 50px;
-  padding-top: 40px;
+  padding: 0 50px;
   background: #f5f5f5;
   overflow-y: auto;
   position: relative;
-
-  .react-page-controls-mode-toggle-control-group {
-    position: fixed !important;
-    right: 0 !important;
-    bottom: 40px !important;
-  }
 `;
 
 export const Content = styled.div`

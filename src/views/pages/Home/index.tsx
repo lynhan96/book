@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import type { Value } from '@react-page/editor';
-import Editor from '@react-page/editor';
-import { cellPlugins } from 'plugins/cellPlugins';
+
 import {
   Layout,
   Sidebar,
@@ -12,55 +10,14 @@ import {
   ContentWrapper,
   PreviewButton,
 } from './styled';
-import { Button } from 'antd';
-import {
-  PlusOutlined,
-  FolderViewOutlined,
-  EditOutlined,
-} from '@ant-design/icons';
-
-type PageType = {
-  page: number;
-  content: Value;
-};
-
-const defaultPage = {
-  page: 1,
-  content: {} as Value,
-};
+import { FolderViewOutlined } from '@ant-design/icons';
+import CustomEditor from 'src/components/Editor';
 
 const Home = () => {
-  const [editMode, setEditMode] = useState(true);
-  const [pages, setPages] = useState<PageType[]>([defaultPage]);
-  const [selectedPage, setSelectedPage] = useState<PageType>(defaultPage);
-
-  const onPageChange = (value: Value) => {
-    setSelectedPage({
-      page: selectedPage.page,
-      content: value,
-    });
-
-    setPages((state) =>
-      state.map((page) => {
-        if (page.page === selectedPage.page)
-          return {
-            page: selectedPage.page,
-            content: value,
-          };
-
-        return page;
-      })
-    );
-  };
-
-  const onAddPage = () => {
-    const newPage = {
-      page: pages.length + 1,
-      content: {} as Value,
-    };
-    setPages([...pages, newPage]);
-    setSelectedPage(newPage);
-  };
+  const [selectedPage, setSelectedPage] = useState('menu');
+  const [menuValue, setMenuValue] = useState('');
+  const [content, setContent] = useState('');
+  const [posterImage, setPosterImage] = useState('');
 
   return (
     <Layout>
@@ -68,38 +25,36 @@ const Home = () => {
         shape='round'
         type='danger'
         size='large'
-        icon={editMode ? <FolderViewOutlined /> : <EditOutlined />}
-        onClick={() => setEditMode(!editMode)}
+        icon={<FolderViewOutlined />}
       >
-        {editMode ? 'Preview Book' : 'Edit Book'}
+        Xem trước
       </PreviewButton>
       <Sidebar>
-        {pages.map((page) => (
-          <PageItem
-            key={`page-${page.page}`}
-            onClick={() => setSelectedPage(page)}
-          >
-            <BlankPage>
-              <Editor cellPlugins={cellPlugins} value={page.content} readOnly />
-            </BlankPage>
-            <PageNumber>{`Page ${page.page}`}</PageNumber>
-          </PageItem>
-        ))}
-        {editMode && (
-          <Button icon={<PlusOutlined />} type='primary' onClick={onAddPage}>
-            Add page
-          </Button>
-        )}
+        <PageItem onClick={() => setSelectedPage('poster')}>
+          <BlankPage active={selectedPage == 'poster'} />
+          <PageNumber>Trang bìa</PageNumber>
+        </PageItem>
+        <PageItem onClick={() => setSelectedPage('menu')}>
+          <BlankPage active={selectedPage == 'menu'} />
+          <PageNumber>Phụ lục</PageNumber>
+        </PageItem>
+        <PageItem onClick={() => setSelectedPage('content')}>
+          <BlankPage active={selectedPage == 'content'} />
+          <PageNumber>Nội dung sách</PageNumber>
+        </PageItem>
       </Sidebar>
       <ContentWrapper>
-        <Content>
-          <Editor
-            cellPlugins={cellPlugins}
-            value={selectedPage.content}
-            onChange={(value) => onPageChange(value)}
-            readOnly={!editMode}
-          />
-        </Content>
+        {selectedPage === 'poster' && <Content></Content>}
+        {selectedPage === 'menu' && (
+          <Content>
+            <CustomEditor setValue={setMenuValue} value={menuValue} />
+          </Content>
+        )}
+        {selectedPage === 'content' && (
+          <Content>
+            <CustomEditor setValue={setContent} value={content} />
+          </Content>
+        )}
       </ContentWrapper>
     </Layout>
   );
