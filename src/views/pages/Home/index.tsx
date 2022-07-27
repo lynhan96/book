@@ -19,7 +19,7 @@ import CustomEditor from 'src/components/Editor';
 const Home = () => {
   const maxNumber = 1;
   const [images, setImages] = useState([]);
-  const [selectedPage, setSelectedPage] = useState('menu');
+  const [selectedPage, setSelectedPage] = useState('poster');
   const [menuValue, setMenuValue] = useState('');
   const [content, setContent] = useState('');
 
