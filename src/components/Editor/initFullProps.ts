@@ -11,7 +11,7 @@ const initFullProps = {
   image_advtab: true,
   image_caption: true,
   quickbars_selection_toolbar:
-    'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+    'bold italic | quicklink h2 h3 blockquote  forecolor backcolor quicktable',
   mobile: {
     theme: 'mobile',
     toolbar: ['undo', 'bold', 'italic', 'styleselect, restoredraft'],

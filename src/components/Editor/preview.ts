@@ -69,7 +69,7 @@ const getPreviewHtml = (editor, htmlContent) => {
     '}' +
     '}, false);' +
     '</script> ';
-  var directionality = editor?.getBody().dir;
+  var directionality = editor?.getBody()?.dir;
   var dirAttr = directionality ? ' dir="' + encode(directionality) + '"' : '';
   var previewHtml =
     '<!DOCTYPE html>' +

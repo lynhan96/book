@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+  body {
+    margin: 0 !important;
+  }
   figure.image {
     display: inline-block;
     border: 1px solid gray;
