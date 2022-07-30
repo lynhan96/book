@@ -1,7 +1,7 @@
 import { Editor } from '@tinymce/tinymce-react';
 import initFullProps from './initFullProps';
 
-const CustomEditor = ({ value, setValue, editorRef }: any) => {
+const CustomEditor = ({ value, setValue, editorRef, editorName }: any) => {
   let contenido: string = value || '';
   let inicioBody: number = -1;
   let finBody: number = -1;
@@ -19,7 +19,7 @@ const CustomEditor = ({ value, setValue, editorRef }: any) => {
       tinymceScriptSrc='/tinymce/tinymce.min.js'
       value={contenido}
       init={{
-        ...initFullProps,
+        ...(initFullProps(editorName) as any),
       }}
       onEditorChange={setValue}
     />

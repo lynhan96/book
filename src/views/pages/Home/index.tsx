@@ -1,8 +1,7 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ImageUploading from 'react-images-uploading';
 import { InboxOutlined } from '@ant-design/icons';
 import { Modal } from 'antd';
-import parse from 'html-react-parser';
 
 import {
   Layout,
@@ -18,13 +17,15 @@ import {
 import { FolderViewOutlined } from '@ant-design/icons';
 import CustomEditor from 'src/components/Editor';
 import getPreviewHtml from 'src/components/Editor/preview';
+import SingleAlbumUpload from './SingleAlbumUpload';
 
 const Home = () => {
   const editorRef = useRef<any>();
+  const uploadRef = useRef<any>();
   const contentEditorRef = useRef<any>();
   const maxNumber = 1;
   const [images, setImages] = useState([]);
-  const [selectedPage, setSelectedPage] = useState('poster');
+  const [selectedPage, setSelectedPage] = useState('menu');
   const [menuValue, setMenuValue] = useState('');
   const [content, setContent] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -33,8 +34,30 @@ const Home = () => {
     setImages(imageList);
   };
 
+  useEffect(() => {
+    window.addEventListener(
+      'message',
+      (event) => {
+        if (event.origin !== window.location.origin) return;
+        try {
+          const data = JSON.parse(event.data);
+
+          if (data.messageType === 'bookEditor') {
+            uploadRef.current.open(
+              data.editorName === 'menu'
+                ? editorRef.current
+                : contentEditorRef.current
+            );
+          }
+        } catch (error) {}
+      },
+      false
+    );
+  }, []);
+
   return (
     <Layout>
+      <SingleAlbumUpload ref={uploadRef} />
       <PreviewButton
         shape='round'
         type='danger'
@@ -145,24 +168,26 @@ const Home = () => {
             </ImageUploading>
           </Content>
         )}
-        {selectedPage === 'menu' && (
-          <Content>
-            <CustomEditor
-              setValue={setMenuValue}
-              value={menuValue}
-              editorRef={editorRef}
-            />
-          </Content>
-        )}
-        {selectedPage === 'content' && (
-          <Content>
-            <CustomEditor
-              setValue={setContent}
-              value={content}
-              editorRef={contentEditorRef}
-            />
-          </Content>
-        )}
+
+        <Content style={{ display: selectedPage === 'menu' ? 'flex' : 'none' }}>
+          <CustomEditor
+            editorName='menu'
+            setValue={setMenuValue}
+            value={menuValue}
+            editorRef={editorRef}
+          />
+        </Content>
+
+        <Content
+          style={{ display: selectedPage === 'content' ? 'flex' : 'none' }}
+        >
+          <CustomEditor
+            editorName='mainContent'
+            setValue={setContent}
+            value={content}
+            editorRef={contentEditorRef}
+          />
+        </Content>
       </ContentWrapper>
       <Modal
         width={794}
