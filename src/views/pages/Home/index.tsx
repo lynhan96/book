@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import ImageUploading from 'react-images-uploading';
 import { InboxOutlined } from '@ant-design/icons';
+import { Modal } from 'antd';
+import parse from 'html-react-parser';
 
 import {
   Layout,
@@ -15,16 +17,19 @@ import {
 } from './styled';
 import { FolderViewOutlined } from '@ant-design/icons';
 import CustomEditor from 'src/components/Editor';
+import getPreviewHtml from 'src/components/Editor/preview';
 
 const Home = () => {
+  const editorRef = useRef<any>();
+  const contentEditorRef = useRef<any>();
   const maxNumber = 1;
   const [images, setImages] = useState([]);
   const [selectedPage, setSelectedPage] = useState('poster');
   const [menuValue, setMenuValue] = useState('');
   const [content, setContent] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const onChange = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
+  const onChange = (imageList, _) => {
     setImages(imageList);
   };
 
@@ -35,6 +40,7 @@ const Home = () => {
         type='danger'
         size='large'
         icon={<FolderViewOutlined />}
+        onClick={() => setIsModalVisible(true)}
       >
         Xem trước
       </PreviewButton>
@@ -118,7 +124,7 @@ const Home = () => {
                       </p>
                       <p className='ant-upload-hint' style={{ marginTop: 0 }}>
                         Ảnh này được dùng làm trang bìa cho sách của bạn hãy
-                        chọn kích thước phù hợp.
+                        chọn kích thước phù hợp. (794x1123)
                       </p>
                     </div>
                   ) : (
@@ -129,7 +135,7 @@ const Home = () => {
                       style={{
                         cursor: 'pointer',
                         width: '100%',
-                        height: '100vh',
+                        height: '100%',
                         objectFit: 'cover',
                       }}
                     />
@@ -141,15 +147,57 @@ const Home = () => {
         )}
         {selectedPage === 'menu' && (
           <Content>
-            <CustomEditor setValue={setMenuValue} value={menuValue} />
+            <CustomEditor
+              setValue={setMenuValue}
+              value={menuValue}
+              editorRef={editorRef}
+            />
           </Content>
         )}
         {selectedPage === 'content' && (
           <Content>
-            <CustomEditor setValue={setContent} value={content} />
+            <CustomEditor
+              setValue={setContent}
+              value={content}
+              editorRef={contentEditorRef}
+            />
           </Content>
         )}
       </ContentWrapper>
+      <Modal
+        width={794}
+        visible={isModalVisible}
+        footer={null}
+        onCancel={() => setIsModalVisible(false)}
+        bodyStyle={{ padding: 10 }}
+      >
+        {images.length > 0 && (
+          <img
+            src={images[0]['data_url']}
+            alt='image'
+            style={{
+              cursor: 'pointer',
+              width: '100%',
+              height: 1123,
+              objectFit: 'cover',
+            }}
+          />
+        )}
+        {menuValue && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: getPreviewHtml(editorRef.current, menuValue),
+            }}
+          />
+        )}
+        {content && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: getPreviewHtml(contentEditorRef.current, content),
+            }}
+          />
+        )}
+      </Modal>
     </Layout>
   );
 };

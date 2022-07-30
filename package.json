@@ -11,8 +11,10 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@tinymce/tinymce-react": "^4.1.0",
+    "@types/tinymce": "^4.6.5",
     "antd": "^4.21.3",
     "babel-plugin-import": "^1.13.5",
+    "html-react-parser": "^3.0.1",
     "jsx-runtime": "^1.2.0",
     "next": "12.1.6",
     "next-plugin-antd-less": "^1.8.0",
