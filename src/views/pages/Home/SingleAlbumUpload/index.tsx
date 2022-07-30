@@ -64,10 +64,16 @@ function beforeUpload(file) {
   return isJpgOrPng;
 }
 
-const FileUpload = ({ onFileChange }) => {
+const FileUpload = ({ setValues }) => {
   const handleChange = (info) => {
     if (info.file.status === 'done') {
-      if (onFileChange) onFileChange(info.fileList);
+      setValues([]);
+
+      info.fileList.map((file) => {
+        getBase64(file.originFileObj, (url) => {
+          setValues((state) => [...state, url]);
+        });
+      });
     }
   };
 
@@ -304,6 +310,8 @@ const SingleAlbumUpload = ({}: any, ref) => {
     },
   }));
 
+  console.log(values);
+
   return (
     <StyledModal
       closable={false}
@@ -335,7 +343,7 @@ const SingleAlbumUpload = ({}: any, ref) => {
         </Col>
         <Col span={24} style={{ marginTop: 20 }}>
           {type === 'desktop' ? (
-            <FileUpload onFileChange={onFileChange} />
+            <FileUpload setValues={setValues} />
           ) : (
             <FolderUpload onFileChange={onFileChange} />
           )}
