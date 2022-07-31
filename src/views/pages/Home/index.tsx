@@ -18,6 +18,11 @@ import { FolderViewOutlined } from '@ant-design/icons';
 import CustomEditor from 'src/components/Editor';
 import getPreviewHtml from 'src/components/Editor/preview';
 import SingleAlbumUpload from './SingleAlbumUpload';
+import dynamic from 'next/dynamic';
+
+const Steps = dynamic(() => import('intro.js-react').then((mod) => mod.Steps), {
+  ssr: false,
+}) as any;
 
 const Home = () => {
   const editorRef = useRef<any>();
@@ -25,7 +30,7 @@ const Home = () => {
   const contentEditorRef = useRef<any>();
   const maxNumber = 1;
   const [images, setImages] = useState([]);
-  const [selectedPage, setSelectedPage] = useState('menu');
+  const [selectedPage, setSelectedPage] = useState('poster');
   const [menuValue, setMenuValue] = useState('');
   const [content, setContent] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -33,6 +38,25 @@ const Home = () => {
   const onChange = (imageList, _) => {
     setImages(imageList);
   };
+
+  const steps = [
+    {
+      element: '#step1',
+      intro: 'Tải lên ảnh bìa cho sách của bạn',
+      position: 'right',
+    },
+    {
+      element: '#step2',
+      intro: 'Tạo mục lục cho sách',
+      position: 'right',
+    },
+    {
+      element: '#step3',
+      intro:
+        'Hãy bắt đầu soạn nội dung cho sách. Bạn có thể sử dụng tính năng đồng bộ với WESAPP để tải hình ảnh lên trong quá trình soạn thảo',
+      position: 'right',
+    },
+  ];
 
   useEffect(() => {
     window.addEventListener(
@@ -57,6 +81,7 @@ const Home = () => {
 
   return (
     <Layout>
+      <Steps enabled={true} steps={steps} initialStep={0} onExit={() => {}} />
       <SingleAlbumUpload ref={uploadRef} />
       <PreviewButton
         shape='round'
@@ -68,7 +93,7 @@ const Home = () => {
         Xem trước
       </PreviewButton>
       <Sidebar>
-        <PageItem onClick={() => setSelectedPage('poster')}>
+        <PageItem onClick={() => setSelectedPage('poster')} id='step1'>
           <BlankPage active={selectedPage == 'poster'}>
             {images.length > 0 && (
               <img
@@ -85,11 +110,11 @@ const Home = () => {
           </BlankPage>
           <PageNumber>Trang bìa</PageNumber>
         </PageItem>
-        <PageItem onClick={() => setSelectedPage('menu')}>
+        <PageItem onClick={() => setSelectedPage('menu')} id='step2'>
           <BlankPage active={selectedPage == 'menu'}></BlankPage>
           <PageNumber>Phụ lục</PageNumber>
         </PageItem>
-        <PageItem onClick={() => setSelectedPage('content')}>
+        <PageItem onClick={() => setSelectedPage('content')} id='step3'>
           <BlankPage active={selectedPage == 'content'} />
           <PageNumber>Nội dung sách</PageNumber>
         </PageItem>
@@ -104,15 +129,7 @@ const Home = () => {
               maxNumber={maxNumber}
               dataURLKey='data_url'
             >
-              {({
-                imageList,
-                onImageUpload,
-                onImageRemoveAll,
-                onImageUpdate,
-                onImageRemove,
-                isDragging,
-                dragProps,
-              }) => (
+              {({ imageList, onImageUpload, onImageUpdate, dragProps }) => (
                 <Upload>
                   {imageList.length === 0 ? (
                     <div

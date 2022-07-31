@@ -30,7 +30,7 @@ const View = ({
         page: 1,
         show_medical_record: showMedicalRecord || false,
       },
-      onSuccess: (data) => {
+      onSuccess: ({ data }) => {
         callback(
           uniqBy([...(data.defaultItem || [])].concat(data.data.items), 'id')
         );

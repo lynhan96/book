@@ -14,8 +14,8 @@ const CustomEditor = ({ value, setValue, editorRef, editorName }: any) => {
 
   return (
     <Editor
-      onInit={(evt, editor) => (editorRef.current = editor)}
-      id='Editor'
+      onInit={(_, editor) => (editorRef.current = editor)}
+      id={editorName}
       tinymceScriptSrc='/tinymce/tinymce.min.js'
       value={contenido}
       init={{
