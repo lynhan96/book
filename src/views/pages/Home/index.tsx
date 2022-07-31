@@ -31,6 +31,7 @@ const Home = () => {
   const maxNumber = 1;
   const [images, setImages] = useState([]);
   const [selectedPage, setSelectedPage] = useState('poster');
+  const [showIntro, setShowIntro] = useState(true);
   const [menuValue, setMenuValue] = useState('');
   const [content, setContent] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -81,7 +82,12 @@ const Home = () => {
 
   return (
     <Layout>
-      <Steps enabled={true} steps={steps} initialStep={0} onExit={() => {}} />
+      <Steps
+        enabled={showIntro}
+        steps={steps}
+        initialStep={0}
+        onExit={() => setShowIntro(false)}
+      />
       <SingleAlbumUpload ref={uploadRef} />
       <PreviewButton
         shape='round'
