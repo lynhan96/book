@@ -29,9 +29,8 @@ const Home = () => {
   const contentEditorRef = useRef<any>();
   const maxNumber = 1;
   const [images, setImages] = useState([]);
-  const [selectedPage, setSelectedPage] = useState('content');
-  const [showIntro, setShowIntro] = useState(false);
-  const [menuValue, setMenuValue] = useState('');
+  const [selectedPage, setSelectedPage] = useState('poster');
+  const [showIntro, setShowIntro] = useState(true);
   const [content, setContent] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 

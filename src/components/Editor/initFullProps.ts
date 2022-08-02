@@ -15,12 +15,6 @@ const initFullProps = (editorName) => ({
   icons: 'thin',
   toolbar_mode: 'wrap',
   pagebreak_split_block: true,
-  force_p_newlines: false,
-  powerpaste_word_import: 'clean',
-  powerpaste_googledocs_import: 'clean',
-  powerpaste_html_import: 'clean',
-  template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
-  template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
   templates: [
     {
       title: 'Mục lục',
@@ -29,34 +23,39 @@ const initFullProps = (editorName) => ({
         <ol class="toc-list" role="list">
           <li>
             <a href="#Introduction">
-            <span class="title">Introduction<span class="leaders" aria-hidden="true"></span></span> <span
-              data-href="#Introduction" class="page"><span class="visually-hidden">Page&nbsp;</span>5</span>
+              <span class="title">
+                Introduction
+                <span class="leaders">.</span>
+              </span>
+              <span data-href="#Introduction" class="page">
+                <span class="visually-hidden">Page&nbsp;</span>5
+              </span>
             </a>
             <ol role="list">
               <li>
                 <a href="#Introduction-About-This-Book">
-                <span class="title">About This Book<span class="leaders" aria-hidden="true"></span></span> <span
+                <span class="title">About This Book<span class="leaders">.</span></span> <span
                   data-href="#Introduction-About-This-Book" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>5</span>
                 </a>
               </li>
               <li>
                 <a href="#Introduction-Acknowledgments">
-                <span class="title">Acknowledgments<span class="leaders" aria-hidden="true"></span></span> <span
+                <span class="title">Acknowledgments<span class="leaders" aria-hidden="true">.</span></span> <span
                   data-href="#Introduction-Acknowledgments" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>8</span>
                 </a>
               </li>
               <li>
                 <a href="#Introduction-About-the-Author">
-                <span class="title">About the Author<span class="leaders" aria-hidden="true"></span></span> <span
+                <span class="title">About the Author<span class="leaders" aria-hidden="true">.</span></span> <span
                   data-href="#Introduction-About-the-Author" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>8</span>
                 </a>
               </li>
               <li>
                 <a href="#Introduction-Disclaimer">
-                <span class="title">Disclaimer<span class="leaders" aria-hidden="true"></span></span> <span
+                <span class="title">Disclaimer<span class="leaders" aria-hidden="true">.</span></span> <span
                   data-href="#Introduction-Disclaimer" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>8</span>
                 </a>
@@ -65,13 +64,13 @@ const initFullProps = (editorName) => ({
           </li>
           <li>
             <a href="#Promise-Basics">
-            <span class="title">1. Promise Basics<span class="leaders" aria-hidden="true"></span></span>
+            <span class="title">1. Promise Basics<span class="leaders" aria-hidden="true">.</span></span>
             <span data-href="#Promise-Basics" class="page"><span class="visually-hidden">Page&nbsp;</span>9</span>
             </a>
             <ol role="list">
               <li>
                 <a href="#Promise-Basics-The-Promise-Lifecycle">
-                <span class="title">The Promise Lifecycle<span class="leaders" aria-hidden="true"></span></span>
+                <span class="title">The Promise Lifecycle<span class="leaders" aria-hidden="true">.</span></span>
                 <span data-href="#Promise-Basics-The-Promise-Lifecycle" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>17</span>
                 </a>
@@ -79,21 +78,21 @@ const initFullProps = (editorName) => ({
               <li>
                 <a href="#Promise-Basics-Creating-New-Unsettled-Promises">
                 <span class="title">Creating New (Unsettled) Promises<span class="leaders"
-                  aria-hidden="true"></span></span> <span
+                  aria-hidden="true">.</span></span> <span
                   data-href="#Promise-Basics-Creating-New-Unsettled-Promises" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>21</span>
                 </a>
               </li>
               <li>
                 <a href="#Promise-Basics-Creating-Settled-Promises">
-                <span class="title">Creating Settled Promises<span class="leaders" aria-hidden="true"></span></span>
+                <span class="title">Creating Settled Promises<span class="leaders" aria-hidden="true">.</span></span>
                 <span data-href="#Promise-Basics-Creating-Settled-Promises" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>24</span>
                 </a>
               </li>
               <li>
                 <a href="#Promise-Basics-Summary">
-                <span class="title">Summary<span class="leaders" aria-hidden="true"></span></span> <span
+                <span class="title">Summary<span class="leaders" aria-hidden="true">.</span></span> <span
                   data-href="#Promise-Basics-Summary" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>27</span>
                 </a>
@@ -102,13 +101,13 @@ const initFullProps = (editorName) => ({
           </li>
           <li>
             <a href="#Chaining-Promises">
-            <span class="title">2. Chaining Promises<span class="leaders" aria-hidden="true"></span></span>
+            <span class="title">2. Chaining Promises<span class="leaders" aria-hidden="true">.</span></span>
             <span data-href="#Chaining-Promises" class="page"><span class="visually-hidden">Page&nbsp;</span>28</span>
             </a>
             <ol role="list">
               <li>
                 <a href="#Chaining-Promises-Catching-Errors">
-                <span class="title">Catching Errors<span class="leaders" aria-hidden="true"></span></span> <span
+                <span class="title">Catching Errors<span class="leaders" aria-hidden="true">.</span></span> <span
                   data-href="#Chaining-Promises-Catching-Errors" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>30</span>
                 </a>
@@ -116,7 +115,7 @@ const initFullProps = (editorName) => ({
               <li>
                 <a href="#Chaining-Promises-Using-finally-in-Promise-Chains">
                 <span class="title">Using finally() in Promise Chains<span class="leaders"
-                  aria-hidden="true"></span></span> <span
+                  aria-hidden="true">.</span></span> <span
                   data-href="#Chaining-Promises-Using-finally-in-Promise-Chains" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>34</span>
                 </a>
@@ -124,7 +123,7 @@ const initFullProps = (editorName) => ({
               <li>
                 <a href="#Chaining-Promises-Returning-Values-in-Promise-Chains">
                 <span class="title">Returning Values in Promise Chains<span class="leaders"
-                  aria-hidden="true"></span></span> <span
+                  aria-hidden="true">.</span></span> <span
                   data-href="#Chaining-Promises-Returning-Values-in-Promise-Chains" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>35</span>
                 </a>
@@ -132,14 +131,14 @@ const initFullProps = (editorName) => ({
               <li>
                 <a href="#Chaining-Promises-Returning-Promises-in-Promise-Chains">
                 <span class="title">Returning Promises in Promise Chains<span class="leaders"
-                  aria-hidden="true"></span></span> <span
+                  aria-hidden="true">.</span></span> <span
                   data-href="#Chaining-Promises-Returning-Promises-in-Promise-Chains" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>42</span>
                 </a>
               </li>
               <li>
                 <a href="#Chaining-Promises-Summary">
-                <span class="title">Summary<span class="leaders" aria-hidden="true"></span></span> <span
+                <span class="title">Summary<span class="leaders" aria-hidden="true">.</span></span> <span
                   data-href="#Chaining-Promises-Summary" class="page"><span
                   class="visually-hidden">Page&nbsp;</span>43</span>
                 </a>
@@ -148,20 +147,158 @@ const initFullProps = (editorName) => ({
           </li>
           <li>
             <a href="#Working-with-Multiple-Promises">
-            <span class="title">3. Working with Multiple Promises<span class="leaders" aria-hidden="true"></span></span>
+            <span class="title">3. Working with Multiple Promises<span class="leaders" aria-hidden="true">.</span></span>
             <span data-href="#Working-with-Multiple-Promises" class="page"><span
               class="visually-hidden">Page&nbsp;</span>43</span>
             </a>
             <ol role="list">
-          <li>
-            <a href="#Working-with-Multiple-Promises-The-Promiseall-Method">
-            <span class="title">The Promise.all() Method<span class="leaders" aria-hidden="true"></span></span>
-            <span data-href="#Working-with-Multiple-Promises-The-Promiseall-Method" class="page"><span
-              class="visually-hidden">Page&nbsp;</span>51</span>
-            </a>
+              <li>
+                <a href="#Working-with-Multiple-Promises-The-Promiseall-Method">
+                <span class="title">The Promise.all() Method<span class="leaders" aria-hidden="true">.</span></span>
+                <span data-href="#Working-with-Multiple-Promises-The-Promiseall-Method" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>51</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Working-with-Multiple-Promises-The-PromiseallSettled-Method">
+                <span class="title">The Promise.allSettled() Method<span class="leaders"
+                  aria-hidden="true">.</span></span> <span
+                  data-href="#Working-with-Multiple-Promises-The-PromiseallSettled-Method" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>57</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Working-with-Multiple-Promises-The-Promiseany-Method">
+                <span class="title">The Promise.any() Method<span class="leaders" aria-hidden="true">.</span></span>
+                <span data-href="#Working-with-Multiple-Promises-The-Promiseany-Method" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>61</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Working-with-Multiple-Promises-The-Promiserace-Method">
+                <span class="title">The Promise.race() Method<span class="leaders" aria-hidden="true">.</span></span>
+                <span data-href="#Working-with-Multiple-Promises-The-Promiserace-Method" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>65</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Working-with-Multiple-Promises-Summary">
+                <span class="title">Summary<span class="leaders" aria-hidden="true">.</span></span> <span
+                  data-href="#Working-with-Multiple-Promises-Summary" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>67</span>
+                </a>
+              </li>
+            </ol>
           </li>
           <li>
-            <a href="#Working-with-Multiple-Promises-The-Promis
+            <a href="#Async-Functions-and-Await-Expressions">
+            <span class="title">4. Async Functions and Await Expressions<span class="leaders"
+              aria-hidden="true">.</span></span>
+            <span data-href="#Async-Functions-and-Await-Expressions" class="page"><span
+              class="visually-hidden">Page&nbsp;</span>67</span>
+            </a>
+            <ol role="list">
+              <li>
+                <a href="#Async-Functions-and-Await-Expressions-Defining-Async-Functions">
+                <span class="title">Defining Async Functions<span class="leaders" aria-hidden="true">.</span></span>
+                <span data-href="#Async-Functions-and-Await-Expressions-Defining-Async-Functions" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>69</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Async-Functions-and-Await-Expressions-What-Makes-Async-Functions-Different">
+                <span class="title">What Makes Async Functions Different<span class="leaders"
+                  aria-hidden="true">.</span></span> <span
+                  data-href="#Async-Functions-and-Await-Expressions-What-Makes-Async-Functions-Different"
+                  class="page"><span class="visually-hidden">Page&nbsp;</span>81</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Async-Functions-and-Await-Expressions-Summary">
+                <span class="title">Summary<span class="leaders" aria-hidden="true">.</span></span> <span
+                  data-href="#Async-Functions-and-Await-Expressions-Summary" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>83</span>
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <a href="#Unhandled-Rejection-Tracking">
+            <span class="title">5. Unhandled Rejection Tracking<span class="leaders" aria-hidden="true">.</span></span>
+            <span data-href="#Unhandled-Rejection-Tracking" class="page"><span
+              class="visually-hidden">Page&nbsp;</span>83</span>
+            </a>
+            <ol role="list">
+              <li>
+                <a href="#Unhandled-Rejection-Tracking-Detecting-Unhandled-Rejections">
+                <span class="title">Detecting Unhandled Rejections<span class="leaders"
+                  aria-hidden="true">.</span></span> <span
+                  data-href="#Unhandled-Rejection-Tracking-Detecting-Unhandled-Rejections" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>85</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Unhandled-Rejection-Tracking-Web-Browser-Unhandled-Rejection-Tracking">
+                <span class="title">Web Browser Unhandled Rejection Tracking<span class="leaders"
+                  aria-hidden="true">.</span></span> <span
+                  data-href="#Unhandled-Rejection-Tracking-Web-Browser-Unhandled-Rejection-Tracking"
+                  class="page"><span class="visually-hidden">Page&nbsp;</span>90</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Unhandled-Rejection-Tracking-Nodejs-Unhandled-Rejection-Tracking">
+                <span class="title">Node.js Unhandled Rejection Tracking<span class="leaders"
+                  aria-hidden="true">.</span></span> <span
+                  data-href="#Unhandled-Rejection-Tracking-Nodejs-Unhandled-Rejection-Tracking" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>94</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Unhandled-Rejection-Tracking-Summary">
+                <span class="title">Summary<span class="leaders" aria-hidden="true">.</span></span> <span
+                  data-href="#Unhandled-Rejection-Tracking-Summary" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>95</span>
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <a href="#Final-Thoughts">
+            <span class="title">Final Thoughts<span class="leaders" aria-hidden="true">.</span></span>
+            <span data-href="#Final-Thoughts" class="page"><span class="visually-hidden">Page&nbsp;</span>96</span>
+            </a>
+            <ol role="list">
+              <li>
+                <a href="#Final-Thoughts-Download-the-Extras">
+                <span class="title">Download the Extras<span class="leaders" aria-hidden="true">.</span></span> <span
+                  data-href="#Final-Thoughts-Download-the-Extras" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>96</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Final-Thoughts-Support-the-Author">
+                <span class="title">Support the Author<span class="leaders" aria-hidden="true">.</span></span> <span
+                  data-href="#Final-Thoughts-Support-the-Author" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>96</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Final-Thoughts-Help-and-Support">
+                <span class="title">Help and Support<span class="leaders" aria-hidden="true">.</span></span> <span
+                  data-href="#Final-Thoughts-Help-and-Support" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>97</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Final-Thoughts-Follow-the-Author">
+                <span class="title">Follow the Author<span class="leaders" aria-hidden="true">.</span></span> <span
+                  data-href="#Final-Thoughts-Follow-the-Author" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>102</span>
+                </a>
+              </li>
+            </ol>
+          </li>
+        </ol>
       `,
     },
     {
