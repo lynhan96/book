@@ -56,7 +56,6 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(100% - 200px);
-  padding: 0 50px;
   background: #f5f5f5;
   overflow-y: auto;
   position: relative;
@@ -68,14 +67,14 @@ export const Content = styled.div`
   margin: auto;
   flex-grow: 1;
   max-width: 794px;
-  height: 1123px;
+  height: 100vh;
   background-color: white;
 `;
 
 export const PreviewButton = styled(Button)`
   position: fixed;
-  right: 30px;
-  top: 20px;
+  left: 230px;
+  top: 140px;
   z-index: 999999;
 `;
 

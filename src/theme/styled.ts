@@ -58,6 +58,8 @@ export default createGlobalStyle`
     display: none;
   }
 
+
+
   .controls {
     border-bottom: 1px solid black;
     padding: 10px;
@@ -89,4 +91,57 @@ export default createGlobalStyle`
     color: Snow;
     background-color: RoyalBlue;
   }
+
+  // Toc Template
+  .toc-list, .toc-list ol {
+    list-style-type: none;
+  }
+
+  .toc-list {
+    padding: 0;
+  }
+
+  .toc-list ol {
+    padding-inline-start: 2ch;
+  }
+
+  .toc-list li > a {
+      text-decoration: none;
+      display: grid;
+      grid-template-columns: auto max-content;
+      align-items: end;
+  }
+
+  .toc-list li > a > .page {
+      text-align: right;
+  }
+
+  .visually-hidden {
+      clip: rect(0 0 0 0);
+      clip-path: inset(100%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      width: 1px;
+      white-space: nowrap;
+  }
+
+  .toc-list li > a > .title {
+      position: relative;
+      overflow: hidden;
+  }
+
+  .toc-list li > a .leaders::after {
+      position: absolute;
+      padding-inline-start: .25ch;
+      content: " . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . "
+          ". . . . . . . . . . . . . . . . . . . . . . . ";
+      text-align: right;
+  }
+
 `;

@@ -25,13 +25,12 @@ const Steps = dynamic(() => import('intro.js-react').then((mod) => mod.Steps), {
 }) as any;
 
 const Home = () => {
-  const editorRef = useRef<any>();
   const uploadRef = useRef<any>();
   const contentEditorRef = useRef<any>();
   const maxNumber = 1;
   const [images, setImages] = useState([]);
-  const [selectedPage, setSelectedPage] = useState('poster');
-  const [showIntro, setShowIntro] = useState(true);
+  const [selectedPage, setSelectedPage] = useState('content');
+  const [showIntro, setShowIntro] = useState(false);
   const [menuValue, setMenuValue] = useState('');
   const [content, setContent] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -48,11 +47,6 @@ const Home = () => {
     },
     {
       element: '#step2',
-      intro: 'Tạo mục lục cho sách',
-      position: 'right',
-    },
-    {
-      element: '#step3',
       intro:
         'Hãy bắt đầu soạn nội dung cho sách. Bạn có thể sử dụng tính năng đồng bộ với WESAPP để tải hình ảnh lên trong quá trình soạn thảo',
       position: 'right',
@@ -68,11 +62,7 @@ const Home = () => {
           const data = JSON.parse(event.data);
 
           if (data.messageType === 'bookEditor') {
-            uploadRef.current.open(
-              data.editorName === 'menu'
-                ? editorRef.current
-                : contentEditorRef.current
-            );
+            uploadRef.current.open(contentEditorRef.current);
           }
         } catch (error) {}
       },
@@ -89,15 +79,6 @@ const Home = () => {
         onExit={() => setShowIntro(false)}
       />
       <SingleAlbumUpload ref={uploadRef} />
-      <PreviewButton
-        shape='round'
-        type='danger'
-        size='large'
-        icon={<FolderViewOutlined />}
-        onClick={() => setIsModalVisible(true)}
-      >
-        Xem trước
-      </PreviewButton>
       <Sidebar>
         <PageItem onClick={() => setSelectedPage('poster')} id='step1'>
           <BlankPage active={selectedPage == 'poster'}>
@@ -116,11 +97,7 @@ const Home = () => {
           </BlankPage>
           <PageNumber>Trang bìa</PageNumber>
         </PageItem>
-        <PageItem onClick={() => setSelectedPage('menu')} id='step2'>
-          <BlankPage active={selectedPage == 'menu'}></BlankPage>
-          <PageNumber>Phụ lục</PageNumber>
-        </PageItem>
-        <PageItem onClick={() => setSelectedPage('content')} id='step3'>
+        <PageItem onClick={() => setSelectedPage('content')} id='step2'>
           <BlankPage active={selectedPage == 'content'} />
           <PageNumber>Nội dung sách</PageNumber>
         </PageItem>
@@ -192,17 +169,11 @@ const Home = () => {
           </Content>
         )}
 
-        <Content style={{ display: selectedPage === 'menu' ? 'flex' : 'none' }}>
-          <CustomEditor
-            editorName='menu'
-            setValue={setMenuValue}
-            value={menuValue}
-            editorRef={editorRef}
-          />
-        </Content>
-
-        <Content
-          style={{ display: selectedPage === 'content' ? 'flex' : 'none' }}
+        <div
+          style={{
+            display: selectedPage === 'content' ? 'flex' : 'none',
+            width: '100%',
+          }}
         >
           <CustomEditor
             editorName='mainContent'
@@ -210,7 +181,7 @@ const Home = () => {
             value={content}
             editorRef={contentEditorRef}
           />
-        </Content>
+        </div>
       </ContentWrapper>
       <Modal
         width={794}
@@ -228,13 +199,6 @@ const Home = () => {
               width: '100%',
               height: 1123,
               objectFit: 'cover',
-            }}
-          />
-        )}
-        {menuValue && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: getPreviewHtml(editorRef.current, menuValue),
             }}
           />
         )}

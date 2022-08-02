@@ -2,33 +2,249 @@ const initFullProps = (editorName) => ({
   formats: {
     tindent_format: { selector: 'p', styles: { 'text-indent': '40mm' } },
   },
-  toolbar:
-    'saveToPdf undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  print | insertfile upload_image_btn media link anchor | ltr rtl',
   plugins:
-    'saveToPdf print paste importcss searchreplace autolink autosave directionality code visualblocks visualchars fullscreen link table charmap hr pagebreak nonbreaking anchor toc advlist lists wordcount  textpattern noneditable help charmap quickbars emoticons',
-  menubar: 'edit view insert format tools table',
-  toolbar_mode: 'wrap',
-  image_advtab: true,
-  image_caption: true,
+    'toc owerpaste importcss searchreplace autolink directionality code visualblocks visualchars fullscreen link template table charmap pagebreak nonbreaking anchor advlist lists wordcount help charmap quickbars emoticons export',
+  toolbar:
+    'toc undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen print | upload_image_btn link anchor | template ltr rtl',
+  menubar: 'file edit view insert format tools table',
+
   quickbars_selection_toolbar:
-    'bold italic | quicklink h2 h3 blockquote  forecolor backcolor quicktable',
-  mobile: {
-    theme: 'mobile',
-    toolbar: ['undo', 'bold', 'italic', 'styleselect, restoredraft'],
-  },
+    'bold italic | quicklink h2 h3 fontsize | blockquote forecolor backcolor quicktable',
   fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt',
   contextmenu: ' copy wordcount',
-  browser_spellcheck: true,
-  language: 'en',
-  language_url: '/tinymce/langs/es.js',
-  paste_data_images: false,
+  icons: 'thin',
+  toolbar_mode: 'wrap',
+  pagebreak_split_block: true,
   force_p_newlines: false,
-  branding: false,
-  forced_root_block: '',
+  powerpaste_word_import: 'clean',
+  powerpaste_googledocs_import: 'clean',
+  powerpaste_html_import: 'clean',
+  template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+  template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+  templates: [
+    {
+      title: 'Mục lục',
+      description: 'Mẫu mục lục',
+      content: `
+        <ol class="toc-list" role="list">
+          <li>
+            <a href="#Introduction">
+            <span class="title">Introduction<span class="leaders" aria-hidden="true"></span></span> <span
+              data-href="#Introduction" class="page"><span class="visually-hidden">Page&nbsp;</span>5</span>
+            </a>
+            <ol role="list">
+              <li>
+                <a href="#Introduction-About-This-Book">
+                <span class="title">About This Book<span class="leaders" aria-hidden="true"></span></span> <span
+                  data-href="#Introduction-About-This-Book" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Introduction-Acknowledgments">
+                <span class="title">Acknowledgments<span class="leaders" aria-hidden="true"></span></span> <span
+                  data-href="#Introduction-Acknowledgments" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>8</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Introduction-About-the-Author">
+                <span class="title">About the Author<span class="leaders" aria-hidden="true"></span></span> <span
+                  data-href="#Introduction-About-the-Author" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>8</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Introduction-Disclaimer">
+                <span class="title">Disclaimer<span class="leaders" aria-hidden="true"></span></span> <span
+                  data-href="#Introduction-Disclaimer" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>8</span>
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <a href="#Promise-Basics">
+            <span class="title">1. Promise Basics<span class="leaders" aria-hidden="true"></span></span>
+            <span data-href="#Promise-Basics" class="page"><span class="visually-hidden">Page&nbsp;</span>9</span>
+            </a>
+            <ol role="list">
+              <li>
+                <a href="#Promise-Basics-The-Promise-Lifecycle">
+                <span class="title">The Promise Lifecycle<span class="leaders" aria-hidden="true"></span></span>
+                <span data-href="#Promise-Basics-The-Promise-Lifecycle" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>17</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Promise-Basics-Creating-New-Unsettled-Promises">
+                <span class="title">Creating New (Unsettled) Promises<span class="leaders"
+                  aria-hidden="true"></span></span> <span
+                  data-href="#Promise-Basics-Creating-New-Unsettled-Promises" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>21</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Promise-Basics-Creating-Settled-Promises">
+                <span class="title">Creating Settled Promises<span class="leaders" aria-hidden="true"></span></span>
+                <span data-href="#Promise-Basics-Creating-Settled-Promises" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>24</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Promise-Basics-Summary">
+                <span class="title">Summary<span class="leaders" aria-hidden="true"></span></span> <span
+                  data-href="#Promise-Basics-Summary" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>27</span>
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <a href="#Chaining-Promises">
+            <span class="title">2. Chaining Promises<span class="leaders" aria-hidden="true"></span></span>
+            <span data-href="#Chaining-Promises" class="page"><span class="visually-hidden">Page&nbsp;</span>28</span>
+            </a>
+            <ol role="list">
+              <li>
+                <a href="#Chaining-Promises-Catching-Errors">
+                <span class="title">Catching Errors<span class="leaders" aria-hidden="true"></span></span> <span
+                  data-href="#Chaining-Promises-Catching-Errors" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>30</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Chaining-Promises-Using-finally-in-Promise-Chains">
+                <span class="title">Using finally() in Promise Chains<span class="leaders"
+                  aria-hidden="true"></span></span> <span
+                  data-href="#Chaining-Promises-Using-finally-in-Promise-Chains" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>34</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Chaining-Promises-Returning-Values-in-Promise-Chains">
+                <span class="title">Returning Values in Promise Chains<span class="leaders"
+                  aria-hidden="true"></span></span> <span
+                  data-href="#Chaining-Promises-Returning-Values-in-Promise-Chains" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>35</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Chaining-Promises-Returning-Promises-in-Promise-Chains">
+                <span class="title">Returning Promises in Promise Chains<span class="leaders"
+                  aria-hidden="true"></span></span> <span
+                  data-href="#Chaining-Promises-Returning-Promises-in-Promise-Chains" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>42</span>
+                </a>
+              </li>
+              <li>
+                <a href="#Chaining-Promises-Summary">
+                <span class="title">Summary<span class="leaders" aria-hidden="true"></span></span> <span
+                  data-href="#Chaining-Promises-Summary" class="page"><span
+                  class="visually-hidden">Page&nbsp;</span>43</span>
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <a href="#Working-with-Multiple-Promises">
+            <span class="title">3. Working with Multiple Promises<span class="leaders" aria-hidden="true"></span></span>
+            <span data-href="#Working-with-Multiple-Promises" class="page"><span
+              class="visually-hidden">Page&nbsp;</span>43</span>
+            </a>
+            <ol role="list">
+          <li>
+            <a href="#Working-with-Multiple-Promises-The-Promiseall-Method">
+            <span class="title">The Promise.all() Method<span class="leaders" aria-hidden="true"></span></span>
+            <span data-href="#Working-with-Multiple-Promises-The-Promiseall-Method" class="page"><span
+              class="visually-hidden">Page&nbsp;</span>51</span>
+            </a>
+          </li>
+          <li>
+            <a href="#Working-with-Multiple-Promises-The-Promis
+      `,
+    },
+    {
+      title: 'Starting my story',
+      description: 'A cure for writers block',
+      content: 'Once upon a time...',
+    },
+    {
+      title: 'New list with dates',
+      description: 'New List with dates',
+      content:
+        '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>',
+    },
+  ],
   height: '100vh',
   content_css: 'default',
-  content_style:
-    'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+  content_style: `
+    html {
+        background: #eceef4;
+        min-height: 100%;
+        padding: 0 .5rem
+    }
+    body {
+        background-color: #fff;
+        box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+        box-sizing: border-box;
+        margin: 1rem auto 0;
+        max-width: 820px;
+        min-height: calc(100vh - 1rem);
+        padding: 2rem 3rem;
+    }
+
+    .toc-list, .toc-list ol {
+      list-style-type: none;
+    }
+
+    .toc-list {
+      padding: 0;
+    }
+
+    .toc-list ol {
+      padding-inline-start: 2ch;
+    }
+
+    .toc-list li > a {
+        text-decoration: none;
+        display: grid;
+        grid-template-columns: auto max-content;
+        align-items: end;
+    }
+
+    .toc-list li > a > .page {
+        text-align: right;
+    }
+
+    .visually-hidden {
+        clip: rect(0 0 0 0);
+        clip-path: inset(100%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+    }
+
+    .toc-list li > a > .title {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .toc-list li > a .leaders::after {
+        position: absolute;
+        padding-inline-start: .25ch;
+        content: " . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . ";
+        text-align: right;
+    }
+  `,
   setup: (editor) => {
     editor.ui.registry.addIcon(
       'uploadImage',
